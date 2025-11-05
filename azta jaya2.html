@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BATIK AZTA JAYA | Batik Night Gown Style</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* RESET & BASE STYLES */
+        :root {
+            --color-primary: #0A0A0A; /* Hitam/Navy Tua */
+            --color-secondary: #FFFFFF; /* Putih */
+            --color-accent: #008080; /* Teal/Nila - Aksen Modern */
+            --color-text: #333333;
+            --color-light: #F8F8F8; /* Krem/Abu Muda */
+            --color-discount: #CC0000; /* Merah untuk diskon/harga spesial */
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            color: var(--color-text);
+            background-color: var(--color-secondary);
+        }
+
+        a {
+            text-decoration: none;
+            color: var(--color-primary);
+            transition: color 0.3s;
+        }
+
+        a:hover {
+            color: var(--color-accent);
+        }
+
+        /* UTILITIES */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        .section-padding {
+            padding: 80px 0;
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        /* HEADER & NAVIGATION */
+        .header {
+            background-color: var(--color-secondary);
+            padding: 15px 0;
+            border-bottom: 1px solid var(--color-light);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8em;
+            font-weight: 700;
+            color: var(--color-primary);
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+        }
+
+        .nav-links li {
+            margin-left: 30px;
+        }
+
+        .nav-links a {
+            font-weight: 500;
+            padding: 5px 0;
+        }
+
+        /* BUTTONS */
+        .btn-primary {
+            display: inline-block;
+            background-color: var(--color-accent);
+            color: var(--color-secondary);
+            padding: 12px 30px;
+            border-radius: 5px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            transition: background-color 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-primary:hover {
+            background-color: #005f5f; /* Darker Teal */
+            color: var(--color-secondary);
+        }
+
+        /* HERO SECTION */
+        .hero {
+            /* Placeholder for Hero Image */
+            background: url('placeholder-hero.jpg') no-repeat center center/cover; 
+            height: 85vh; 
+            display: flex;
+            align-items: center;
+            position: relative;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.4); 
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            color: var(--color-secondary);
+            max-width: 600px;
+            padding: 20px;
+        }
+
+        .hero-content h1 {
+            font-size: 3.5em;
+            margin-bottom: 15px;
+            line-height: 1.1;
+        }
+
+        .hero-content p {
+            font-size: 1.2em;
+            margin-bottom: 30px;
+            font-weight: 300;
+        }
+
+        /* ABOUT SECTION */
+        .about-section {
+            background-color: var(--color-light);
+        }
+
+        .about-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .about-content h2 {
+            font-size: 2.2em;
+            margin-bottom: 20px;
+            color: var(--color-primary);
+        }
+
+        /* FEATURED COLLECTION */
+        .featured-collection h2 {
+            font-size: 2.2em;
+            margin-bottom: 40px;
+            color: var(--color-primary);
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
+            gap: 30px;
+        }
+
+        .product-card {
+            background-color: var(--color-secondary);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .product-image {
+            width: 100%;
+            height: 350px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .product-info {
+            padding: 15px;
+        }
+
+        .product-info h3 {
+            font-size: 1.1em;
+            margin-bottom: 5px;
+            font-weight: 500;
+        }
+        
+        /* PRICE HIDING: Menghilangkan Gaya Harga yang lama */
+        .price-wrapper {
+            display: none; 
+        }
+
+        /* Gaya baru untuk deskripsi singkat */
+        .product-description {
+            font-size: 0.9em;
+            color: #666;
+            margin-bottom: 15px;
+            line-height: 1.4;
+        }
+        
+        /* PRICE TABLE SECTION */
+        .price-list-section {
+            background-color: var(--color-light);
+            padding: 50px 0;
+            border-top: 1px solid #ddd;
+        }
+        
+        .price-table {
+            width: 100%;
+            max-width: 900px; /* Lebar lebih besar untuk 3 kolom */
+            margin: 30px auto 0;
+            border-collapse: collapse;
+            text-align: left;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+            background-color: var(--color-secondary);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .price-table th, .price-table td {
+            padding: 15px;
+            border-bottom: 1px solid var(--color-light);
+        }
+
+        .price-table th {
+            background-color: var(--color-primary);
+            color: var(--color-secondary);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .price-table tr:nth-child(even) {
+            background-color: var(--color-light);
+        }
+
+        .price-table td.price-value {
+            font-weight: 600;
+            text-align: right;
+            color: var(--color-text); /* Harga Satuan */
+        }
+        
+        .price-table td.price-paket {
+            color: var(--color-discount); /* Harga Sepaket (Diskon) */
+            font-weight: 700;
+            text-align: right;
+            background-color: #ffeaea; /* Background sedikit merah muda */
+        }
+        
+        .price-table th:last-child {
+            background-color: var(--color-accent); /* Header Paket warna accent */
+        }
+
+
+        /* FOOTER */
+        .footer {
+            background-color: var(--color-primary);
+            color: var(--color-light);
+            padding: 40px 0;
+            font-size: 0.9em;
+            text-align: center;
+        }
+
+        .footer a {
+            color: var(--color-accent);
+        }
+
+        /* RESPONSIVE DESIGN */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none; 
+            }
+
+            .hero {
+                height: 70vh;
+            }
+
+            .hero-content h1 {
+                font-size: 2.5em;
+            }
+
+            .section-padding {
+                padding: 50px 0;
+            }
+
+            .price-table {
+                font-size: 0.9em;
+                max-width: 100%;
+            }
+
+            .price-table th, .price-table td {
+                padding: 10px 5px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="header">
+        <div class="container">
+            <nav class="nav">
+                <a href="#" class="logo">BATIK AZTA JAYA</a>
+                <ul class="nav-links">
+                    <li><a href="#koleksi">Koleksi</a></li>
+                    <li><a href="#harga">Daftar Harga</a></li>
+                    <li><a href="#tentang">Tentang Kami</a></li>
+                    <li><a href="#kontak">Hubungi Kami</a></li>
+                </ul>
+                <a href="#koleksi" class="btn-primary" style="padding: 8px 20px;">Lihat Produk</a>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>BATIK AZTA JAYA</h1>
+                <p>Temukan produk batik dengan Desain modern, nyaman dipakai, dan penuh ekspresi untuk Generasi AZTA.</p>
+                <a href="#koleksi" class="btn-primary">LIHAT PRODUK</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="tentang" class="about-section section-padding">
+        <div class="container text-center about-content">
+            <h2>Batik Azta Jaya</h2>
+            <p>BATIK AZTA JAYA di buat dengan desaign modern seperti batik daster pada umumnya,untuk menghadirkan batik dalam kehidupan sehari-hari.Kami menciptakan desain batik dengan bahan yang nyaman di pakai dan penuh ekspresi untuk generasi AZTA. Setiap motif kami menceritakan dengan bangga untuk Anda yang tak takut mengekspresikan identitas.</p>
+        </div>
+    </section>
+
+    <section id="koleksi" class="featured-collection section-padding">
+        <div class="container text-center">
+            <h2>PRODUK AZTA JAYA</h2>
+            <div class="product-grid">
+
+                <div class="product-card" onclick="window.location.href='product-detail.html?item=urban-nebula'">
+                    <img src="lowo1.jpg" alt="Batik Daster-Lowo" class="product-image">
+                    <div class="product-info">
+                        <h3>Batik Daster-Lowo</h3>
+                        <p class="product-description">Potongan dengan motif bunga-bunga, dan menggunakan bahan rayon, adem, dan nyaman di pakai buat sehari-hari.</p>
+                        <button class="btn-primary" onclick="whatsappOrder(event, 'Daster Lowo', 'KME-001')" style="width: 100%;">🛒 Pesan Sekarang via WhatsApp</button>
+                    </div>
+                </div>
+
+                <div class="product-card" onclick="window.location.href='product-detail.html?item=terra-hoodie'">
+                    <img src="lowo2.jpg" alt="Batik Daster-Lowo" class="product-image">
+                    <div class="product-info">
+                        <h3>Batik Daster-Lowo</h3>
+                        <p class="product-description">Potongan dengan motif bunga-bunga, dan menggunakan bahan rayon, adem, dan nyaman di pakai buat sehari-hari.</p>
+                        <button class="btn-primary" onclick="whatsappOrder(event, 'Batik Daster-Lowo', 'HD-002')" style="width: 100%;">🛒 Pesan Sekarang via WhatsApp</button>
+                    </div>
+                </div>
+
+                <div class="product-card" onclick="window.location.href='product-detail.html?item=navy-tee'">
+                    <img src="jumbo cabut monalisa.jpg" alt="Batik Daster Jumbo-Monalisa" class="product-image">
+                    <div class="product-info">
+                        <h3>Batik Daster Jumbo-Monalisa</h3>
+                        <p class="product-description">Batik Daster Super Jumbo ini berbahan rayon adem, dan nyaman di pakai, dengan motif MONALISA, baju ini berukuran All size, panjang baju 120, dan lebar dada 140, cocok untuk di pakai buat sehari-hari.</p>
+                        <button class="btn-primary" onclick="whatsappOrder(event, 'Batik Daster Jumbo-Monalisa', 'TS-003')" style="width: 100%;">🛒 Pesan Sekarang via WhatsApp</button>
+                    </div>
+                </div>
+
+                <div class="product-card" onclick="window.location.href='product-detail.html?item=monochrome-dress'">
+                    <img src="jumbo cabut.jpg" alt="Batik Daster Jumbo-Cabut" class="product-image">
+                    <div class="product-info">
+                        <h3>Batik Daster Jumbo-Cabut</h3>
+                        <p class="product-description">Batik Daster Super Jumbo ini berbahan rayon adem, dan nyaman di pakai, dengan motif Cabut, baju ini berukuran All size, panjang baju 120, dan lebar dada 140, cocok untuk di pakai buat sehari-hari.</p>
+                        <button class="btn-primary" onclick="whatsappOrder(event, 'Batik Daster Jumbo-Cabut, 'DRS-004')" style="width: 100%;">🛒 Pesan Sekarang via WhatsApp</button>
+                    </div>
+                </div>
+                
+                <div class="product-card" onclick="window.location.href='product-detail.html?item=cargo-shirt'">
+                    <img src="jumbo kotak.jpg" alt="Batik Daster Jumbo-Kotak" class="product-image">
+                    <div class="product-info">
+                        <h3>Batik Daster Jumbo-Kotak</h3>
+                        <p class="product-description">Batik Daster Super Jumbo ini berbahan rayon adem, dan nyaman di pakai, dengan motif Kotak-Kotak, baju ini berukuran All size, panjang baju 120, dan lebar dada 140, cocok untuk di pakai buat sehari-hari.</p>
+                        <button class="btn-primary" onclick="whatsappOrder(event, 'Batik Daster Jumbo-Kotak, 'KME-005')" style="width: 100%;">🛒 Pesan Sekarang via WhatsApp</button>
+                    </div>
+                </div>
+                
+                <div class="product-card" onclick="window.location.href='product-detail.html?item=short-pants'">
+                    <img src="standar kamila.jpg" alt="Batik Daster Standar" class="product-image">
+                    <div class="product-info">
+                        <h3>Batik Daster Standar</h3>
+                        <p class="product-description">Batik Daster Standar ini bahannya Rayon adem dan nyaman di pakai, Batik Daster Standar ini menggunakan motif Cabut Kamila, berukuran all size, panjang baju 155cm, lebar dada 112cm, cocok untuk kegiatan santai di rumah.</p>
+                        <button class="btn-primary" onclick="whatsappOrder(event, 'Batik Daster-Standar', 'CLP-006')" style="width: 100%;">🛒 Pesan Sekarang via WhatsApp</button>
+                    </div>
+                </div>
+
+                <div class="product-card" onclick="window.location.href='product-detail.html?item=varsity-jacket'">
+                    <img src="standar salwa.jpg" alt="Batik Daster-Standar" class="product-image">
+                    <div class="product-info">
+                        <h3>Batik Daster-Standar</h3>
+                        <p class="product-description">Batik Daster Standar ini bahannya Rayon adem dan nyaman di pakai, Batik Daster Standar ini menggunakan motif Cabut Salwa, berukuran all size, panjang baju 155cm, lebar dada 112cm, cocok untuk kegiatan santai di rumah.</p>
+                        <button class="btn-primary" onclick="whatsappOrder(event, 'Jaket Varsity Batik Daster-Standar, 'JKT-007')" style="width: 100%;">🛒 Pesan Sekarang via WhatsApp</button>
+                    </div>
+                </div>
+            </div>
+            <a href="#harga" class="btn-primary" style="margin-top: 50px;">Lihat Daftar Harga</a>
+        </div>
+    </section>
+
+    <section id="harga" class="price-list-section">
+        <div class="container text-center">
+            <h2>Daftar Harga & Paket Spesial</h2>
+            <p style="margin-bottom: 20px; color: #666;">Dapatkan harga terbaik dengan membeli secara Paket. Harga belum termasuk biaya pengiriman. Hubungi CS untuk ketersediaan stok.</p>
+            
+            <table class="price-table">
+                <thead>
+                    <tr>
+                        <th style="width: 50%;">Nama Produk</th>
+                        <th style="width: 25%; text-align: right;">Harga Satuan</th>
+                        <th style="width: 25%; text-align: right;">Harga Sepaket</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Daster Lowo</td>
+                        <td class="price-value">Rp 30.000</td>
+                        <td class="price-paket">Rp 100.000 / 4 pcs</td>
+                    </tr>
+                    <tr>
+                        <td>Daster Lowo</td>
+                        <td class="price-value">Rp 30.000</td>
+                        <td class="price-paket">Rp 100.000 / 4 pcs</td>
+                    </tr>
+                    <tr>
+                        <td>Daster Jumbo Monalisa</td>
+                        <td class="price-value">Rp 30.000</td>
+                        <td class="price-paket">Rp 100.000 / 4 pcs</td>
+                    </tr>
+                    <tr>
+                        <td>Daster Jumbo Cabut</td>
+                        <td class="price-value">Rp 30.000</td>
+                        <td class="price-paket">Rp 100.000 / 4 pcs</td>
+                    </tr>
+                    <tr>
+                        <td>Daster Jumbo Cabut Kotak-Kotak</td>
+                        <td class="price-value">Rp 30.000</td>
+                        <td class="price-paket">Rp 100.000 / 4 pcs</td>
+                    </tr>
+                    <tr>
+                        <td>Daster Standar Cabut Kamila</td>
+                        <td class="price-value">Rp 25.000</td>
+                        <td class="price-paket">Rp 100.000 / 5 pcs</td>
+                    </tr>
+                    <tr>
+                        <td>Daster Standar Cabut Salwa</td>
+                        <td class="price-value">Rp 25.000</td>
+                        <td class="price-paket">Rp 100.000 / 5 pcs</td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <h3 style="margin-top: 40px; color: var(--color-accent);">Syarat & Ketentuan Paket:</h3>
+            <p style="max-width: 700px; margin: 10px auto; color: #666;">Harga Sepaket untuk standar berlaku untuk pembelian minimal 5 produk, sedangkan jumbo berlaku untuk pembelian minimal 4 produk, (boleh campur) dalam satu kali transaksi.</p>
+            <a href="#kontak" class="btn-primary" style="margin-top: 30px;">Pesan Paket Sekarang!</a>
+        </div>
+    </section>
+
+    <section id="kontak" class="section-padding text-center">
+        <div class="container">
+            <h2>Kami Siap Membantu Anda</h2>
+            <p style="margin-bottom: 30px;">Untuk pertanyaan, konsultasi, atau pemesanan, jangan ragu untuk menghubungi kami langsung melalui WhatsApp. Customer service kami siap melayani Anda.</p>
+            <a href="https://wa.me/62895384996700?text=Halo%20BATIK%20AZTA%20JAYA%2C%20saya%20ingin%20bertanya%20tentang%20koleksi%20Anda." target="_blank" class="btn-primary" style="background-color: #25D366; font-size: 1.2em; padding: 15px 40px;">
+                💬 Hubungi Kami via WhatsApp
+            </a>
+            <p style="margin-top: 20px; color: #666;">Jam Operasional: Senin - Minggu, 09.00 - 17.00 WIB.</p>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <p>&copy; 2025 BATIK AZTA JAYA. All rights reserved. | <a href="#">Kebijakan Privasi</a></p>
+    </footer>
+
+    <script>
+        function whatsappOrder(event, productName, productCode) {
+            event.stopPropagation(); 
+            const phoneNumber = '62895384996700'; // Ganti dengan nomor WhatsApp Anda
+            
+            // Format Pesan Otomatis
+            const message = `Halo BATIK AZTA JAYA, saya tertarik dengan produk: ${productName} - ${productCode}. Apakah masih tersedia?`;
+            
+            // Encode pesan untuk URL
+            const encodedMessage = encodeURIComponent(message);
+            
+            // Buat link WhatsApp
+            const whatsappLink = `https://wa.me/0895384996700?text=${encodedMessage}`;
+            
+            // Buka di tab baru
+            window.open(whatsappLink, '_blank');
+        }
+    </script>
+</body>
+</html>
